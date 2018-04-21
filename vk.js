@@ -93,7 +93,7 @@ function httpsRequest(params, postData) {
     });
 }
  
-var res = audio_api(pd);
+var res = audio_api();
 res = prepare(res);
 console.log(res);
 
