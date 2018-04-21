@@ -14,6 +14,9 @@ var pd = {
         'playlist_id': '-1',
         'offset': 0
     }
+var post_data = querystring.stringify(
+        pd
+    );
 
 var options = {
         host: 'vk.com',
