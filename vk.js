@@ -29,7 +29,7 @@ var pd = {
     }
 var res = await audio_api(pd);
 
-async function audio_api(payload, callback) {
+async function audio_api(payload) {
     // Build the post string from an object
 
     var post_data = querystring.stringify(
