@@ -94,7 +94,7 @@ function httpsRequest(params, postData) {
 }
  
 var res = audio_api();
-res = prepare(res);
+//res = prepare(res);
 console.log(res);
 
 function prepare(data) {
