@@ -1,5 +1,7 @@
 const express        = require('express');
 const bodyParser     = require('body-parser');
+const Nightmare = require('nightmare')
+const nightmare = Nightmare({ show: true })
 
 const app            = express();
 var querystring = require('querystring');
@@ -22,7 +24,7 @@ var options = {
 const port = 8000;
 app.use(bodyParser.text());
 app.use(bodyParser.urlencoded({ extended: true }));
-require('./app/routes')(app, cookie,iconv, request, querystring, '');
+require('./app/routes')(app, cookie,iconv, request, querystring, nightmare);
 app.listen(port, () => {
   console.log('We are live on ' + port);
 });
