@@ -16,12 +16,14 @@ app.get('/audioSpecial/:id', (req, res) => {
         if(!error){
           //res.send(body)
           console.log('BODY:----------'+body)
-          res.send(JSON.stringify(response.body));
-           //res.send(parse(body, res));
+          //res.send(JSON.stringify(response.body));
+          //parse(body, res);
         }else {
           console.log('MY ERR:----------');
-          res.send(error)
+          //res.send(error)
         }
+        
+        res.send(parse(body, res));
       });
   });
 
