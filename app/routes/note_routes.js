@@ -154,7 +154,7 @@ function parse(body, res){
   var json = JSON.parse(jsonStringArray);
   //res.send('hello')
   }catch(err){
-  console.log('MY ERR rapse:----------');
+  console.log('MY ERR rapse:----------'+ err);
   res.send(err)
   }
 
