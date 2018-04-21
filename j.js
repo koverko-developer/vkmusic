@@ -11,7 +11,7 @@ nightmare
                 // now we'll never get here if the page failed to load, so no
                 // need to worry about this `evaluate` call timing out.
                 .evaluate(() => document.documentElement.outerHTML)
-                .then(function(html) { /
+                .then(function(html) { 
                  console.log(html);
                                      });
         }
