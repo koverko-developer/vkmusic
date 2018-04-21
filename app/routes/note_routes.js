@@ -128,7 +128,7 @@ module.exports = function(app, cookie,iconv, request, querystring) {
       }, function(error, response, body){
         if(!error){
           res.send(body)
-          console.log('BODY:----------'+body.substring(0,1000);
+          console.log('BODY:----------'+body.substring(0,1000));
           //parse(body, res);
         }else {
           console.log('MY ERR:----------');
