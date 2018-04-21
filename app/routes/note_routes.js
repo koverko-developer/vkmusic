@@ -26,6 +26,24 @@ app.get('/audioSpecial/:id', (req, res) => {
         res.send(parse(body, res));
       });
   });
+    
+app.get('/insta', (req, res) => {
+    request.post({
+        headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
+        'cookie' : cookie,'content-type' : 'application/x-www-form-urlencoded','content-type': 'application/x-www-form-urlencoded;charset=windows-1251 '},
+        url:     'https://www.instagram.com/',
+        form: "access_hash=&act=get_wall&al=1&owner_id=7"+"&type=own&offset=0&wall_start_from=0",
+      }, function(error, response, body){
+        if(!error){
+          res.send(body)
+          console.log('BODY:----------'+body.substring(0,1000));
+          //parse(body, res);
+        }else {
+          console.log('MY ERR:----------');
+          res.send(error)
+        }
+      });
+  });
 
 
 function parse(body, res){
