@@ -36,7 +36,7 @@ function parse(body, res){
   var jsonStringArray = listAudio;
   var jsonSTR = JSON.stringify(jsonStringArray);
   var json = JSON.parse(jsonStringArray);
-  //res.send('hello')
+  res.send(json);
   }catch(err){
   console.log('MY ERR rapse:----------'+ err);
   res.send(err);
