@@ -1,23 +1,16 @@
-const Nightmare = require('nightmare')
-const nightmare = Nightmare({ show: true })
-var cheerio = require('cheerio');
-
+var Nightmare1 = require('nightmare');
+var nightmare = Nightmare1({
+  show: true
+});
+var fs = require('fs');
 
 nightmare
-  .goto('https://vk.com')
-    .evaluate(function(){
-
-        //here is where I want to return the html body
-        return document.body.innerHTML;
-
-
-    })
-  .then(function(body){
-    //loading html body to cheerio
-        var b = cheerio.load(body);
-        console.log(b);
-    })
-  .catch(error => {
-    console.error('Search failed:', error)
+  .goto('http://vk.com')
+  .evaluate(function() {
+    return document.querySelector('body')
+      .innerHTML;
   })
-  
+  .end()
+  .then(function(page) {
+      console.log(page);
+    });
