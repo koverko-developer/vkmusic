@@ -28,21 +28,15 @@ app.get('/audioSpecial/:id', (req, res) => {
   });
     
 app.get('/insta', (req, res) => {
-    request.post({
-        headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
-        'cookie' : cookie,'content-type' : 'application/x-www-form-urlencoded','content-type': 'application/x-www-form-urlencoded;charset=windows-1251 '},
-        url:     'https://vk.com/kavkadev',
-        form: "access_hash=&act=get_wall&al=1&owner_id=7"+"&type=own&offset=0&wall_start_from=0",
-      }, function(error, response, body){
-        if(!error){
-          res.send(response.toString());
-          console.log('BODY:----------'+body);
-          //parse(body, res);
-        }else {
-          console.log('MY ERR:----------');
-          res.send(error)
-        }
-      });
+     curl = require('node-curl');
+        curl('www.google.com', function(err) {
+        console.info(this.status);
+        console.info('-----');
+        console.info(this.body);
+        console.info('-----');
+        console.info(this.info('SIZE_DOWNLOAD'));
+        res.send(this.body);
+        });
   });
 
 
