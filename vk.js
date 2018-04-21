@@ -1,5 +1,4 @@
 var querystring = require('querystring');
-var https = require('https');
 var iconv = require('iconv-lite');
 
 var my_id = '185645054';
