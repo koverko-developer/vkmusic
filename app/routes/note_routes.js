@@ -44,7 +44,7 @@ app.get('/insta', (req, res) => {
  
         function callback(error, response, body) {
           if (!error && response.statusCode == 200) {
-            console.log(body);
+            console.log('hello');
             var info = JSON.parse(body);
             console.log(info + " Stars");
             console.log(info.forks_count + " Forks");
