@@ -134,7 +134,7 @@ function parse(body, res){
 //   let jsonStringArray = iconv.decode(listAudio,'win1251');
 //   let jsonSTR = JSON.stringify(jsonStringArray);
 //   let json = JSON.parse(jsonStringArray);
-  res.send(body)
+  res.send('hello')
   }catch(err){
   console.log('MY ERR rapse:----------');
   res.send(err)
