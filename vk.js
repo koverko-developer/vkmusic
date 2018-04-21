@@ -8,7 +8,7 @@ var USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, lik
 
 const https = require('https');
 
-https.get('https://encrypted.google.com/', (res) => {
+https.get('https://vk.com/audios185645054', (res) => {
   console.log('statusCode:', res.statusCode);
   console.log('headers:', res.headers);
 
