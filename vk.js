@@ -19,7 +19,7 @@ var options = {
     
      }
 };
-let pd = {
+var pd = {
         'al': 1,
         'act': 'load_section',
         'owner_id': my_id,
@@ -27,7 +27,7 @@ let pd = {
         'playlist_id': '-1',
         'offset': 0
     }
-let res = await audio_api(pd);
+var res = await audio_api(pd);
 
 async function audio_api(payload, callback) {
     // Build the post string from an object
@@ -50,7 +50,7 @@ async function audio_api(payload, callback) {
             'user-agent': USER_AGENT
         }
     };
-    let result = await httpsRequest(post_options, post_data);
+    var result = await httpsRequest(post_options, post_data);
     return result;
 }
 function httpsRequest(params, postData) {
