@@ -51,7 +51,8 @@ function audio_api() {
         }
     };
     var result = httpsRequest(post_options, post_data);
-  console.log(result);
+    console.log(result);
+    res = prepare(res);
     return result;
 }
 function httpsRequest(params, postData) {
@@ -92,4 +93,13 @@ function httpsRequest(params, postData) {
     });
 }
  
-audio_api();
+var res = audio_api(pd);
+res = prepare(res);
+console.log(res);
+
+function prepare(data) {
+    var res = iconv.decode(data, 'win1251');
+    var json_data = res.split('<!>')[5];
+    json_data = JSON.parse(json_data.slice(7));
+    return json_data;
+}
