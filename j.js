@@ -1,7 +1,7 @@
 var http = require('http');
 
 var options = {
-    host: 'vk.com',
+    host: 'anika-cs.by',
     path: '/'
 }
 var request = http.request(options, function (res) {
