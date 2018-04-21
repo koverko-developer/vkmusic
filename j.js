@@ -2,7 +2,7 @@ const Nightmare = require('nightmare')
 const nightmare = Nightmare({ show: true })
 
 nightmare
-    .goto('http://www.vk.com/')
+    .goto('http://www.anika-cs.by/')
   .wait()
   .evaluate(function () {
         return document.documentElement.outerHTML;
