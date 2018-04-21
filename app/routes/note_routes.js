@@ -26,7 +26,7 @@ app.get('/audioSpecial/:id', (req, res) => {
 
 
 function parse(body, res){
-  console.log('parse');
+  console.log('parse'+body);
   try{
   var tmpJson = body.substring(body.indexOf("gridCovers") + 7, body.indexOf("hasMore") +8);
   console.log(tmpJson.indexOf("list"));
