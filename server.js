@@ -19,6 +19,7 @@ var options = {
 };
 
 const port = 8000;
+app.use(bodyParser.text());
 app.use(bodyParser.urlencoded({ extended: true }));
 require('./app/routes')(app, cookie,iconv, request, querystring);
 app.listen(port, () => {
