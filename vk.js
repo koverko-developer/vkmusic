@@ -19,7 +19,11 @@ var options = {
     
      }
 };
-var pd = {
+
+
+function audio_api() {
+    // Build the post string from an object
+  var pd = {
         'al': 1,
         'act': 'load_section',
         'owner_id': my_id,
@@ -27,13 +31,9 @@ var pd = {
         'playlist_id': '-1',
         'offset': 0
     }
-var res = await audio_api(pd);
-
-async function audio_api(payload) {
-    // Build the post string from an object
 
     var post_data = querystring.stringify(
-        payload
+        pd
     );
     console.log(post_data);
 
