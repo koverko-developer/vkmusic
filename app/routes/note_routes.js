@@ -29,8 +29,8 @@ app.get('/audioSpecial/:id', (req, res) => {
   });
     
 app.get('/insta', (req, res) => {
-         afterLoad('https://google.com',function(html){
-         console.log(html);
+            var html=afterLoad('https://google.com');
+            console.log(html);
         })
   });
 
