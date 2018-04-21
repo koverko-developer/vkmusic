@@ -23,7 +23,7 @@ app.get('/audioSpecial/:id', (req, res) => {
           //res.send(error)
         }
         
-        res.send(parse(body, res));
+        res.send(body.toString());
       });
   });
     
