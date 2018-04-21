@@ -2,13 +2,19 @@ const Nightmare = require('nightmare')
 const nightmare = Nightmare({ show: true })
 
 nightmare
-  .goto('https://duckduckgo.com')
-  .type('#search_form_input_homepage', 'github nightmare')
-  .click('#search_button_homepage')
-  .wait('#r1-0 a.result__a')
-  .evaluate(() => document.querySelector('#r1-0 a.result__a').href)
-  .end()
-  .then(console.log)
-  .catch(error => {
-    console.error('Search failed:', error)
-  })
+    // it *really* goes to this URL, which will fail
+    .goto('www.vk.com')
+    .catch(function(error) {
+        // only handle errors from the `evaluate` action
+        if (error.message && error.message.includes('Evaluation')) {
+            return nightmare
+                // now we'll never get here if the page failed to load, so no
+                // need to worry about this `evaluate` call timing out.
+                .evaluate(() => document.documentElement.outerHTML)
+                .then(function(html) { /
+                 console.log(html);
+                                     });
+        }
+        throw error;
+    })
+    .catch(function(error) { console.error(error); });
