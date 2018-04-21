@@ -149,10 +149,10 @@ function parse(body, res){
   console.log(tmpJson.indexOf("hasMore"));
   var arrL = tmpJson.substring(tmpJson.indexOf("list")+6, tmpJson.length-6);
   var listAudio = arrL.substring(0, arrL.length -4);
-  var jsonStringArray = iconv.decode(listAudio,'win1251');
+  var jsonStringArray = listAudio;
   var jsonSTR = JSON.stringify(jsonStringArray);
   var json = JSON.parse(jsonStringArray);
-  res.send('hello')
+  //res.send('hello')
   }catch(err){
   console.log('MY ERR rapse:----------');
   res.send(err)
