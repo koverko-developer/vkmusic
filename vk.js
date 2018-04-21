@@ -8,7 +8,7 @@ var iconv = require('iconv-lite');
 var USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36';
 
 
-https.get('https://encrypted.google.com/', (res) => {
+https.post('https://vk.com/al_audio.php', (res) => {
   console.log('statusCode:', res.statusCode);
   console.log('headers:', res.headers);
 
