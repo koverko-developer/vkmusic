@@ -2,7 +2,7 @@ var cheerio = require('cheerio');
 var iconv = require('iconv-lite');
 
 
-module.exports = function(app, cookie,iconv, request, querystring, curl) {
+module.exports = function(app, cookie,iconv, request, querystring, nightmare) {
 
 app.get('/audioSpecial/:id', (req, res) => {
     const id = req.params.id;
