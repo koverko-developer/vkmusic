@@ -126,8 +126,7 @@ module.exports = function(app, cookie,iconv, request, querystring) {
 function parse(body, res){
   console.log('parse');
   try{
-  let res1 = body;
-  let tmpJson = res1.substring(res1.indexOf("gridCovers") + 7, res1.indexOf("hasMore") +8);
+  let tmpJson = body.substring(body.indexOf("gridCovers") + 7, body.indexOf("hasMore") +8);
   console.log(tmpJson.indexOf("list"));
   console.log(tmpJson.indexOf("hasMore"));
   let arrL = tmpJson.substring(tmpJson.indexOf("list")+6, tmpJson.length-6);
