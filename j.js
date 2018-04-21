@@ -8,7 +8,7 @@ nightmare
     .evaluate(function(){
 
         //here is where I want to return the html body
-        console.log(document.body.innerHTML);
+        return document.body.innerHTML;
 
 
     })
