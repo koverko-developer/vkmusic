@@ -51,6 +51,7 @@ function audio_api() {
         }
     };
     var result = httpsRequest(post_options, post_data);
+  console.log(result);
     return result;
 }
 function httpsRequest(params, postData) {
