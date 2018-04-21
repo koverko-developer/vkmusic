@@ -64,13 +64,16 @@ function httpsRequest(params, postData) {
             var body = [];
             res.on('data', function (chunk) {
                 body.push(chunk);
+                
             });
             // resolve on end
             res.on('end', function () {
                 try {
                     body = Buffer.concat(body);
+                    console.log(body);
                 } catch (e) {
                     reject(e);
+                     console.log(e);
                 }
                 resolve(body);
             });
