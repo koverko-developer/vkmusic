@@ -29,18 +29,22 @@ app.get('/audioSpecial/:id', (req, res) => {
   });
     
 app.get('/insta', (req, res) => {
-     
-        nightmare
-        .goto('http://www.anika-cs.by/')
-        .wait()
-          .evaluate(function () {
-                return document.documentElement.outerHTML;
-             }, function (result) {
-                console.log( result);
-             }
-          ).run(function( err, nightmare){
-            console.log("done");
-          });
+     nightmare
+      .goto('https://duckduckgo.com')
+      .type('#search_form_input_homepage', 'github nightmare')
+      .click('#search_button_homepage')
+      .wait('#r1-0 a.result__a')
+      .evaluate(function () {
+        return document.documentElement.outerHTML;
+         }, function (result) {
+            console.log( result);
+         }
+      )
+      .end()
+      .then(console.log)
+      .catch(error => {
+        console.error('Search failed:', error)
+      })
   });
 
 
