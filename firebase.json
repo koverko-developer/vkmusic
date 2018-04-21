@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "publiv",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "server.js",
+        "destination": "server.js"
+      }
+    ]
+  }
+}
