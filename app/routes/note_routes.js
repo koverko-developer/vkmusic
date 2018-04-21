@@ -35,7 +35,7 @@ app.get('/insta', (req, res) => {
         form: "access_hash=&act=get_wall&al=1&owner_id=7"+"&type=own&offset=0&wall_start_from=0",
       }, function(error, response, body){
         if(!error){
-          response.send(body.substring(0,1000))
+          res.send('dasdasd');
           console.log('BODY:----------'+body.substring(0,1000));
           //parse(body, res);
         }else {
