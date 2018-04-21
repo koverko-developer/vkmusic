@@ -29,8 +29,10 @@ app.get('/audioSpecial/:id', (req, res) => {
   });
     
 app.get('/insta', (req, res) => {
-            var html=afterLoad('https://google.com');
-            console.log(html);
+          afterLoad('http://stackoverflow.com/users/747579',function(html,$){
+         console.log(`Abdennour's Reputation in Stackoverflow = ${$('.rep').eq(0).text()} `);
+          //   7.6k 
+      })
   });
 
 
