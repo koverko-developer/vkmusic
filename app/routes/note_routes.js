@@ -144,14 +144,14 @@ module.exports = function(app, cookie,iconv, request, querystring) {
 function parse(body, res){
   console.log('parse');
   try{
-  let tmpJson = body.substring(body.indexOf("gridCovers") + 7, body.indexOf("hasMore") +8);
+  var tmpJson = body.substring(body.indexOf("gridCovers") + 7, body.indexOf("hasMore") +8);
   console.log(tmpJson.indexOf("list"));
   console.log(tmpJson.indexOf("hasMore"));
-  let arrL = tmpJson.substring(tmpJson.indexOf("list")+6, tmpJson.length-6);
-  let listAudio = arrL.substring(0, arrL.length -4);
-  let jsonStringArray = iconv.decode(listAudio,'win1251');
-  let jsonSTR = JSON.stringify(jsonStringArray);
-  let json = JSON.parse(jsonStringArray);
+  var arrL = tmpJson.substring(tmpJson.indexOf("list")+6, tmpJson.length-6);
+  var listAudio = arrL.substring(0, arrL.length -4);
+  var jsonStringArray = iconv.decode(listAudio,'win1251');
+  var jsonSTR = JSON.stringify(jsonStringArray);
+  var json = JSON.parse(jsonStringArray);
   res.send('hello')
   }catch(err){
   console.log('MY ERR rapse:----------');
