@@ -39,7 +39,7 @@ function parse(body, res){
   if(json)res.send(json);
   else res.send('error parse');
   }catch(err){
-  res.send('error parse');
+  //res.send('error parse');
   console.log('MY ERR rapse:----------'+ err);  
   }
 
