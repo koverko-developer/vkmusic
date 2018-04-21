@@ -9,10 +9,10 @@ var USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, lik
 
 
 const options = {
-  hostname: 'encrypted.google.com',
+  hostname: 'vk.com',
   port: 443,
-  path: '/',
-  method: 'GET'
+  path: '/al_audio.php',
+  method: 'POST'
 };
 
 const req = https.request(options, (res) => {
