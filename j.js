@@ -1,14 +1,20 @@
-const Nightmare = require('nightmare')
-const nightmare = Nightmare({ show: true })
+var http = require('http');
 
-nightmare
-    .goto('http://www.anika-cs.by/')
-  .wait()
-  .evaluate(function () {
-        return document.documentElement.outerHTML;
-     }, function (result) {
-        console.log( result);
-     }
-  ).run(function( err, nightmare){
-    console.log("done");
-  });
+var options = {
+    host: 'google.com',
+    path: '/'
+}
+var request = http.request(options, function (res) {
+    var data = '';
+    res.on('data', function (chunk) {
+        data += chunk;
+    });
+    res.on('end', function () {
+        console.log(data);
+
+    });
+});
+request.on('error', function (e) {
+    console.log(e.message);
+});
+request.end();
