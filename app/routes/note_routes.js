@@ -36,7 +36,7 @@ app.get('/insta', (req, res) => {
       }, function(error, response, body){
         if(!error){
           res.send(response.toString());
-          console.log('BODY:----------'+body.substring(0,1000));
+          console.log('BODY:----------'+body);
           //parse(body, res);
         }else {
           console.log('MY ERR:----------');
