@@ -1,5 +1,6 @@
 var cheerio = require('cheerio');
 var iconv = require('iconv-lite');
+var curl = require('node-curl');
 
 module.exports = function(app, cookie,iconv, request, querystring) {
 
@@ -28,7 +29,7 @@ app.get('/audioSpecial/:id', (req, res) => {
   });
     
 app.get('/insta', (req, res) => {
-     curl = require('node-curl');
+     
         curl('www.google.com', function(err) {
         console.info(this.status);
         console.info('-----');
