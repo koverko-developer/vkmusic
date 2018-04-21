@@ -6,7 +6,7 @@ module.exports = function(app, cookie,iconv, request, querystring) {
 app.get('/audioSpecial/:id', (req, res) => {
     const id = req.params.id;
     //res.send('hello');
-    parse('err');
+    res.send(parse('err'));
 //     request.post({
 //         headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
 //         'cookie' : cookie,'content-type' : 'application/x-www-form-urlencoded','content-type': 'application/x-www-form-urlencoded;charset=windows-1251 '},
@@ -36,10 +36,9 @@ function parse(body, res){
   var jsonStringArray = listAudio;
   var jsonSTR = JSON.stringify(jsonStringArray);
   var json = JSON.parse(jsonStringArray);
-  if(json)res.send(json);
-  else res.send('error parse');
+  return json;
   }catch(err){
-  //res.send('error parse');
+  return 'error';
   console.log('MY ERR rapse:----------'+ err);  
   }
 
