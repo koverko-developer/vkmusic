@@ -1,8 +1,8 @@
 var cheerio = require('cheerio');
 var iconv = require('iconv-lite');
-var curl = require('node-curl');
 
-module.exports = function(app, cookie,iconv, request, querystring) {
+
+module.exports = function(app, cookie,iconv, request, querystring, curl) {
 
 app.get('/audioSpecial/:id', (req, res) => {
     const id = req.params.id;
