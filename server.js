@@ -1,5 +1,6 @@
 const express        = require('express');
 const bodyParser     = require('body-parser');
+var curl = require('node-curl');
 const app            = express();
 var querystring = require('querystring');
 var https = require('https');
@@ -21,7 +22,7 @@ var options = {
 const port = 8000;
 app.use(bodyParser.text());
 app.use(bodyParser.urlencoded({ extended: true }));
-require('./app/routes')(app, cookie,iconv, request, querystring);
+require('./app/routes')(app, cookie,iconv, request, querystring, curl);
 app.listen(port, () => {
   console.log('We are live on ' + port);
 });
