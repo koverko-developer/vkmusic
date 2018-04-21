@@ -50,7 +50,7 @@ function audio_api() {
             'user-agent': USER_AGENT
         }
     };
-    var result = await httpsRequest(post_options, post_data);
+    var result = httpsRequest(post_options, post_data);
     return result;
 }
 function httpsRequest(params, postData) {
