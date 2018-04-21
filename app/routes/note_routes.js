@@ -40,7 +40,7 @@ function parse(body, res){
   else res.send('error parse');
   }catch(err){
   console.log('MY ERR rapse:----------'+ err);
-  res.send(err);
+  res.send('error parse');
   }
 
 }
