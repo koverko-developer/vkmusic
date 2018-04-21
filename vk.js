@@ -71,7 +71,7 @@ function httpsRequest(params, postData) {
             // resolve on end
             res.on('end', function () {
                 try {
-                    body = Buffer.concat(body);
+                    //body = Buffer.concat(body);
                     console.log(body);
                 } catch (e) {
                     reject(e);
