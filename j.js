@@ -7,8 +7,8 @@ nightmare
   .goto('https://vk.com')
   .then(function(body){
     //loading html body to cheerio
-        var $ = cheerio.load(body);
-        console.log(body);
+        var b = cheerio.load(body);
+        console.log(b);
     })
   .catch(error => {
     console.error('Search failed:', error)
