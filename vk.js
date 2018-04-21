@@ -1,7 +1,6 @@
 var querystring = require('querystring');
 var https = require('https');
 var iconv = require('iconv-lite');
-const readline = require('readline-sync');
 
 var my_id = parseInt(readline.question("Enter your ID: "));
 
