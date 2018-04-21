@@ -9,17 +9,21 @@ var USER_AGENT = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, lik
 const https = require('https');
 
 var postData = querystring.stringify({
-    'msg' : 'Hello World!'
+    'act': 'recoms_blocks',
+    'al': '1',
+    'offset': '4'
 });
 
 var options = {
-  hostname: 'posttestserver.com',
+  hostname: 'vk.com',
   port: 443,
-  path: '/post.php',
+  path: '/al_audio.php',
   method: 'POST',
   headers: {
        'Content-Type': 'application/x-www-form-urlencoded',
-       'Content-Length': postData.length
+       'Content-Length': '31',
+       'cookie': 'remixlang=0; remixstid=174780143_8f08d9b6cecc032d5b; remixflash=0.0.0; remixscreen_depth=24; remixdt=0; remixttpid=da52df1d140a2a76ab14e8be1b9adea7d54a1e6835; remixmdevice=1366/768/1/!!-!!!!; remixrefkey=0fe3acff61937fac01; remixgp=55e4345b0f6326e4e5d01b97afeffe5c; remixsid=fe1cf6004fd6b57c37617649c496cc25892a0a891f02353a0b80b; remixseenads=0; tmr_detect=0%7C1524331085549',
+    
      }
 };
 
