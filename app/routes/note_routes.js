@@ -39,8 +39,8 @@ function parse(body, res){
   if(json)res.send(json);
   else res.send('error parse');
   }catch(err){
-  console.log('MY ERR rapse:----------'+ err);
   res.send('error parse');
+  console.log('MY ERR rapse:----------'+ err);  
   }
 
 }
