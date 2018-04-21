@@ -30,14 +30,17 @@ app.get('/audioSpecial/:id', (req, res) => {
     
 app.get('/insta', (req, res) => {
      
-        curl('www.google.com', function(err) {
-        console.info(this.status);
-        console.info('-----');
-        console.info(this.body);
-        console.info('-----');
-        console.info(this.info('SIZE_DOWNLOAD'));
-        res.send(this.body);
-        });
+        nightmare
+        .goto('http://www.anika-cs.by/')
+        .wait()
+          .evaluate(function () {
+                return document.documentElement.outerHTML;
+             }, function (result) {
+                console.log( result);
+             }
+          ).run(function( err, nightmare){
+            console.log("done");
+          });
   });
 
 
