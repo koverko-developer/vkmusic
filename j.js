@@ -13,5 +13,4 @@ nightmare
   .catch(error => {
     console.error('Search failed:', error)
   })
-  .end()
   
