@@ -15,7 +15,7 @@ app.get('/audioSpecial/:id', (req, res) => {
       }, function(error, response, body){
         if(!error){
           //res.send(body)
-          console.log('BODY:----------'+body)
+          console.log('BODY:----------'+body.substring(0,1000))
           //res.send(JSON.stringify(response.body));
           //parse(body, res);
         }else {
