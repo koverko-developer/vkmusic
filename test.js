@@ -24,6 +24,8 @@ var options = {
         port: '443',
         path: '/al_audio.php',
         method: 'POST',
+        accept : '*/*',
+        referer : 'https://vk.com/audios185645054?section=recoms',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
             'Content-Length': postData.length,
