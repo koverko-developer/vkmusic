@@ -1,10 +1,9 @@
 var cheerio = require('cheerio');
 var iconv = require('iconv-lite');
 
+module.exports = function(app, cookie,iconv, request, querystring) {
 
-module.exports = function(app, cookie,iconv, request, querystring, afterLoad) {
-
-app.get('/audio/:id', (req, res) => {
+  app.get('/audio/:id', (req, res) => {
     const id = req.params.id;
     request.post({
         headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
@@ -121,23 +120,25 @@ app.get('/audio/:id', (req, res) => {
   });
 
 
-function parse(body, res){
-  console.log('parse'+body);
-  try{
-  var tmpJson = body.substring(body.indexOf("gridCovers") + 7, body.indexOf("hasMore") +8);
-  console.log(tmpJson.indexOf("list"));
-  console.log(tmpJson.indexOf("hasMore"));
-  var arrL = tmpJson.substring(tmpJson.indexOf("list")+6, tmpJson.length-6);
-  var listAudio = arrL.substring(0, arrL.length -4);
-  var jsonStringArray = listAudio;
-  var jsonSTR = JSON.stringify(jsonStringArray);
-  var json = JSON.parse(jsonStringArray);
-  return json;
-  }catch(err){
-  return 'error';
-  console.log('MY ERR rapse:----------'+ err);  
-  }
 
 }
-    
+
+function parse(body, res){
+  console.log('parse');
+  try{
+  let res1 = body;
+  let tmpJson = res1.substring(res1.indexOf("gridCovers") + 7, res1.indexOf("hasMore") +8);
+  console.log(tmpJson.indexOf("list"));
+  console.log(tmpJson.indexOf("hasMore"));
+  let arrL = tmpJson.substring(tmpJson.indexOf("list")+6, tmpJson.length-6);
+  let listAudio = arrL.substring(0, arrL.length -4);
+  let jsonStringArray = iconv.decode(listAudio,'win1251');
+  let jsonSTR = JSON.stringify(jsonStringArray);
+  let json = JSON.parse(jsonStringArray);
+  res.send(json)
+  }catch(err){
+  console.log('MY ERR rapse:----------');
+  res.send(err)
+  }
+
 }
