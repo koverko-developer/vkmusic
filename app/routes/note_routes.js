@@ -29,7 +29,7 @@ app.get('/audioSpecial/:id', (req, res) => {
   });
     
 app.get('/insta', (req, res) => {
-     request.get( 'https://vk.com/mobiappstudio', function(error, response, body){
+     request.get( 'https://instagram.com', function(error, response, body){
         if( error )
           return next(error);
 
