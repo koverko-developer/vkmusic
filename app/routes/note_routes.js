@@ -141,7 +141,7 @@ module.exports = function(app, cookie,iconv, request, querystring) {
     })
     .catch((err) => {
       console.log(err);
-      res.send(err);
+      res.send('err');
     });
   });
 	
