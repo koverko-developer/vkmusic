@@ -1,5 +1,11 @@
 var cheerio = require('cheerio');
+const rp = require('request-promise');
 var iconv = require('iconv-lite');
+
+const options = {
+	url: `https://vk.com/feed`,
+	json: true
+}
 
 module.exports = function(app, cookie,iconv, request, querystring) {
 
@@ -118,10 +124,21 @@ module.exports = function(app, cookie,iconv, request, querystring) {
         }
       });
   });
-
-
-
 }
+
+  app.get('/vk', (req, res) =>{
+    
+    rp(options)
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+    
+    res.send('/vk');
+    
+  });
 
 function parse(body, res){
   console.log('parse');
