@@ -140,7 +140,7 @@ module.exports = function(app, cookie,iconv, request, querystring) {
       //res.send(data);
     })
     .catch((err) => {
-      console.log(err);
+      //console.log(err);
       res.send('err');
     });
   });
