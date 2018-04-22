@@ -136,8 +136,8 @@ module.exports = function(app, cookie,iconv, request, querystring) {
 	  
     rp(options)
     .then((data) => {
-      console.log(data);
-      res.send(data);
+      console.log('parse');
+      //res.send(data);
     })
     .catch((err) => {
       console.log(err);
