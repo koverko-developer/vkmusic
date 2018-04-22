@@ -129,11 +129,11 @@ module.exports = function(app, cookie,iconv, request, querystring) {
     rp(options)
     .then((data) => {
       console.log(data);
-      res.send('/vk');
+      res.send(data);
     })
     .catch((err) => {
       console.log(err);
-      res.send('/vk');
+      res.send(err);
     });
   });
 	
