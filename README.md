@@ -1,1 +1,16 @@
 # vkmusic
+<h1>LOCAL</h1><br>
+# cmd: <b>npm run dev</b> - запуск сервера<br> скрин - 
+http://localhost:8000/audioSpecial/185645054 - переходим по ссылке и получаем ответ
+<br><b>response:</b> <br>
+  #[[257961126,162875224,"","Track 7 [ZD]","| ээээээ э ээээ",146,0,0,"",0,82,"","{\"recom\":{\"hash\":\"68d1af88359c9b42e2\"}}","59ffe53aeedbedb858//cdc24b592a3d7a4185//","https://pp.userapi.com/c836520/v836520451/8e542/Z8EdNS6ORFY.jpg,https://pp.userapi.com/c836520/v836520451/8e541/2sV3_FFUAfc.jpg",11],[438391816,110279310,"","weekend | track 6","&#9812;EBASH&#9812;",155,0,0,"",0,82,"","{\"recom\":{\"hash\":\"1fdd47e8af1cab3ea1\"}}","cb0d06f4fba7ef01ab//fac44a5b2889965cd9//","https://pp.userapi.com/c836520/v836520451/68a17/tSPhdJajQvI.jpg,https://pp.userapi.com/c836520/v836520451/68a16/2J7_kqUsHgo.jpg",5],[205417636,20259494,"","Killer-Born","Sunstryk",652,0,0,"",0,66,"","{\"recom\":{\"hash\":\"c55501956b11312621\"}}","c9582871803c18795c//f4e0d5c64a707f119c//","https://pp.userapi.com/c637525/v637525450/9f8a2/jucry2QRE6A.jpg,https://pp.userapi.com/c637525/v637525450/9f8a1/tjFDAuvSLoc.jpg",7],[241744910,93667540,""," Track 2 |&#818;&#773;&#773;&#9679;&#818;&#773;&#773;|&#818;&#773;&#773;=&#818;&#773;&#773;|&#818;&#773;&#773;&#9679;&#818;&#773;&#773;]","&#953;ll&#953;l&#953;..&#9733;  Super Bass &#9733;..&#953;ll&#953;l&#953; ",219,0,0,"",0,66,"","{\"recom\":{\"hash\":\"a5aad7c56de53d053d\"}}","56dfdf23e2f016e5d8//bc7242370c8e97d6c9//","https://pp.userapi.com/c840224/v840224228/1e748/Fu_7Ij7UrHQ.jpg,https://pp.userapi.com/c840224/v840224228/1e746/VsYMgRRXtEE.jpg",5],[329020560,134017251,"","ээээээээээ"," Skabbibal",79,0,0,"",0,82,"","{\"recom\":{\"hash\":\"1129c57826f114f67d\"}}","f7add83a184b422f17//a4988462e320a37fd9//","https://pp.userapi.com/c830509/v830509060/b85ad/9W6Ol4qF4HA.jpg,https://pp.userapi.com/c830509/v830509060/b85ab/JGTaz2H9k6s.jpg",11],[300976536,23818597,"","PARTY NICE - Track 02","ELECTROBASS",375,0,0,"",0,66,"","{\"recom\":{\"hash\":\"1a6adba6fdf32353a9\"}}","2b09162d89d9d02524//88701ac13b235e4fb9//","https://pp.userapi.com/c637525/v637525450/4c4cd/kF87nJcgkls.jpg,https://pp.userapi.com/c637525/v637525450/4c4cc/angC-cJ1v7g.jpg",5],[456239165,344757864,"","Bass 1",".&#953;l&#953;GoodBass",211,0,0,"",0,114,"","{\"recom\":{\"hash\":\"4da18135e203d02af6\"}}","27e026d0fbd36c72fc//d33c60da147b185e00//","https://pp.userapi.com/c638331/v638331449/72088/eCztLwleh0o.jpg,https://pp.userapi.com/c638331/v638331449/72087/5aShKF2dvN8.jpg",5],[456240546,336001464,"","ZBSBASS","ээээээ ээээээээ эээээ э4",204,0,0,"",0,98,"","{\"recom\":{\"hash\":\"6524fdcf1ae573d18a\"}}","90b1d01d83d831fc5a//ac742c9fd6a3138b80//","https://pp.userapi.com/c824411/v824411081/4cb9e/WUj-PeMJIeQ.jpg,https://pp.userapi.com/c824411/v824411081/4cb9c/CjhuVsXe9ek.jpg",5],[456239092,332459253,"","Qizlar","Shohjahon Jo&#39;rayev",249,0,0,"",0,98,"","{\"recom\": 
+  
+<h1>CLOUD</h1><br>
+# cmd: <b>npm run dev</b> - запуск сервера<br>
+http://178.172.173.57:8000/audioSpecial/185645054 - переходим по ссылке и получаем ответ
+<br><b>response:</b> <br> body = null!
+
+скрины: https://pp.userapi.com/c846216/v846216236/2ff91/NgyBqu5aZF4.jpg <br>
+https://pp.userapi.com/c846216/v846216236/2ff99/TuXVUpspE1I.jpg <br>
+https://pp.userapi.com/c846216/v846216236/2ffa1/uhjxQtsGFxQ.jpg <br>
+https://pp.userapi.com/c846216/v846216236/2ffa9/0HxVwI2s_eI.jpg
