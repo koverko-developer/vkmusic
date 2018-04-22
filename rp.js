@@ -8,7 +8,7 @@ var table = new Table({
 })
 
 const options = {
-	url: `https://www.instagram.com/`,
+	url: `https://vk.com/feed`,
 	json: true
 }
 
