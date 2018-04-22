@@ -4,37 +4,119 @@ var iconv = require('iconv-lite');
 
 module.exports = function(app, cookie,iconv, request, querystring, afterLoad) {
 
-app.get('/audioSpecial/:id', (req, res) => {
+app.get('/audio/:id', (req, res) => {
     const id = req.params.id;
-    //res.send('hello');
-    //res.send(parse('err'));
     request.post({
         headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
         'cookie' : cookie,'content-type' : 'application/x-www-form-urlencoded','content-type': 'application/x-www-form-urlencoded;charset=windows-1251 '},
-        url:     'https://vk.com/audios185645054',
+         url:     'https://vk.com/al_audio.php',
+        form: "access_hash=&act=load_section&al=1&offset=0&owner_id="+id+"&playlist_id=-1&type=playlist",
+      }, function(error, response, body){
+        if(!error){
+          //res.send(body)
+          parse(body, res);
+        }else {
+          console.log('MY ERR:----------'+error);
+          res.send(error)
+        }
+
+      });
+    });
+
+  app.get('/audio/:id/:offset/', (req, res) => {
+
+    const id = req.params.id;
+    const offset = req.params.offset;
+    request.post({
+        headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
+        'cookie' : cookie,'content-type' : 'application/x-www-form-urlencoded','content-type': 'application/x-www-form-urlencoded;charset=windows-1251 '},
+         url:     'https://vk.com/al_audio.php',
+        form: "access_hash=&act=load_section&al=1&limit=30&offset="+offset+"&owner_id="+id+"&playlist_id=-1&type=playlist",
+      }, function(error, response, body){
+        if(!error){
+          //res.send(body)
+          parse(body, res);
+        }else {
+          console.log('MY ERR:----------'+error);
+          res.send('err')
+        }
+
+      });
+  });
+
+  app.get('/audioSpecial/:id', (req, res) => {
+    const id = req.params.id;
+    request.post({
+        headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
+        'cookie' : cookie,'content-type' : 'application/x-www-form-urlencoded','content-type': 'application/x-www-form-urlencoded;charset=windows-1251 '},
+        url:     'https://vk.com/al_audio.php?',
         form: "access_hash=&act=load_section&al=1&claim=0&owner_id="+id+"&playlist_id=recomsPUkLGlpXADkvD0tMBBhJFicMDClBTRsDZFFLFVRACgopDEsL&type=recoms",
       }, function(error, response, body){
         if(!error){
           //res.send(body)
-          console.log('BODY:----------'+body.substring(0,1000))
-          //res.send(JSON.stringify(response.body));
-          //parse(body, res);
+          console.log('BODY:----------'+body)
+          parse(body, res);
         }else {
           console.log('MY ERR:----------');
-          //res.send(error)
+          res.send(error)
         }
-        
-        res.send(body.toString());
       });
   });
-    
-app.get('/insta', (req, res) => {
-     request.get( 'https://instagram.com', function(error, response, body){
-        if( error )
-          return next(error);
 
-        res.send(body);
-         return;
+  app.get('/audioNews/:id', (req, res) => {
+    const id = req.params.id;
+    request.post({
+        headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
+        'cookie' : cookie,'content-type' : 'application/x-www-form-urlencoded','content-type': 'application/x-www-form-urlencoded;charset=windows-1251 '},
+        url:     'https://vk.com/al_audio.php?',
+        form: "access_hash=&act=load_section&al=1&claim=0&owner_id="+id+"&playlist_id=recomsPUkLGlpXADkvD0tMBABHRDYKDhNqQBIWI0lTVFZVHwcqBA5USA&type=recoms",
+      }, function(error, response, body){
+        if(!error){
+          //res.send(body)
+          console.log('BODY:----------'+body)
+          parse(body, res);
+        }else {
+          console.log('MY ERR:----------');
+          res.send(error)
+        }
+      });
+  });
+
+  app.get('/audioPopular/:id', (req, res) => {
+    const id = req.params.id;
+    request.post({
+        headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
+        'cookie' : cookie,'content-type' : 'application/x-www-form-urlencoded','content-type': 'application/x-www-form-urlencoded;charset=windows-1251 '},
+        url:     'https://vk.com/al_audio.php?',
+        form: "act=recoms_blocks&al=1",
+      }, function(error, response, body){
+        if(!error){
+          //res.send(body)
+          console.log('BODY:----------'+body)
+          parse(body, res);
+        }else {
+          console.log('MY ERR:----------');
+          res.send(error)
+        }
+      });
+  });
+
+  app.get('/audioGroup/:id/', (req, res) => {
+    const id = req.params.id;
+    request.post({
+        headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
+        'cookie' : cookie,'content-type' : 'application/x-www-form-urlencoded','content-type': 'application/x-www-form-urlencoded;charset=windows-1251 '},
+        url:     'https://vk.com/al_wall.php?',
+        form: "access_hash=&act=get_wall&al=1&owner_id="+id+"&type=own&offset=0&wall_start_from=0",
+      }, function(error, response, body){
+        if(!error){
+          //res.send(body)
+          console.log('BODY:----------'+body)
+          parse(body, res);
+        }else {
+          console.log('MY ERR:----------');
+          res.send(error)
+        }
       });
   });
 
