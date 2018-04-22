@@ -125,18 +125,16 @@ module.exports = function(app, cookie,iconv, request, querystring) {
       });
   });
 	
-  app.get('/vk', (req, res) =>{
-    
+  app.get('/vk', (req, res) =>{    
     rp(options)
     .then((data) => {
       console.log(data);
+      res.send('/vk');
     })
     .catch((err) => {
       console.log(err);
+      res.send('/vk');
     });
-    
-    res.send('/vk');
-    
   });
 	
 } 
