@@ -128,15 +128,13 @@ module.exports = function(app, cookie,iconv, request, querystring) {
   app.get('/vk', (req, res) =>{  
 	  var id = '185645054';
     var options = {
-	  method: 'POST',
 	 headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
         'cookie' : cookie,'content-type' : 'application/x-www-form-urlencoded','content-type': 'application/x-www-form-urlencoded;charset=windows-1251 '},
-         uri:     'https://vk.com/al_audio.php',
-         form: "access_hash=&act=load_section&al=1&offset=0&owner_id="+id+"&playlist_id=-1&type=playlist"};
+         uri:     'https://vk.com'};
 	  
     rp(options)
     .then((data) => {
-      console.log('parse');
+      console.log(data);
       //res.send(data);
     })
     .catch((err) => {
