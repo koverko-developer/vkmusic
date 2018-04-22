@@ -2,7 +2,7 @@ const rp = require('request-promise');
 const cheerio = require('cheerio');
 const Table = require('cli-table');
 
-let table = new Table({
+var table = new Table({
 	head: ['username', '❤️', 'challenges'],
 	colWidths: [15, 5, 10]
 })
@@ -14,8 +14,8 @@ const options = {
 
 rp(options)
 	.then((data) => {
-		let userData = [];
-		for (let user of data.directory_items) {
+		var userData = [];
+		for (var user of data.directory_items) {
 			userData.push({name: user.user.username,likes_received: user.likes_received});
 		}
 		process.stdout.write('loading');
