@@ -34,6 +34,7 @@ app.get('/insta', (req, res) => {
           return next(error);
 
         res.send(body);
+         return;
       });
   });
 
