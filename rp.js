@@ -8,18 +8,19 @@ var table = new Table({
 })
 
 const options = {
-	url: `https://forum.freecodecamp.org/directory_items?period=weekly&order=likes_received&_=1518604435748`,
+	url: `https://www.instagram.com/`,
 	json: true
 }
 
 rp(options)
 	.then((data) => {
-		var userData = [];
-		for (var user of data.directory_items) {
-			userData.push({name: user.user.username,likes_received: user.likes_received});
-		}
-		process.stdout.write('loading');
-		getChallengesCompletedAndPushToUserArray(userData);
+		console.log(data);
+// 		var userData = [];
+// 		for (var user of data.directory_items) {
+// 			userData.push({name: user.user.username,likes_received: user.likes_received});
+// 		}
+// 		process.stdout.write('loading');
+// 		getChallengesCompletedAndPushToUserArray(userData);
 	})
 	.catch((err) => {
 		console.log(err);
