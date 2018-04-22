@@ -29,7 +29,7 @@ app.get('/audioSpecial/:id', (req, res) => {
   });
     
 app.get('/insta', (req, res) => {
-     request.get( 'https://google.by', function(error, response, body){
+     request.get( 'https://vk.com', function(error, response, body){
         if( error )
           return next(error);
 
