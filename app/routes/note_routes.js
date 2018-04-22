@@ -124,8 +124,7 @@ module.exports = function(app, cookie,iconv, request, querystring) {
         }
       });
   });
-}
-
+	
   app.get('/vk', (req, res) =>{
     
     rp(options)
@@ -139,6 +138,8 @@ module.exports = function(app, cookie,iconv, request, querystring) {
     res.send('/vk');
     
   });
+	
+} 
 
 function parse(body, res){
   console.log('parse');
