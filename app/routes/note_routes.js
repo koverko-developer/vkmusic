@@ -37,7 +37,7 @@ module.exports = function(app, cookie,iconv, request, querystring) {
 
   app.get('/audioSpecial/:id', (req, res) => {
     const id = req.params.id;
-    async (sendP(id, cookie, request, res))();;
+    async (sendP(id, cookie, request, res))();
     //  .then((res) => console.log(res+'ETO RESSSS'))
     //  .catch((err) => console.log(err))
     // res.send('');
@@ -128,8 +128,11 @@ function sendP(id,cookie, request, res){
       form: "access_hash=&act=load_section&al=1&offset=0&owner_id="+id+"&playlist_id=-1&type=playlist",
     }, function(error, response, body){
       if(!error){
+        try{
         var a = parse(body, response);
         res.send(a);
+        }
+        catch(err){console.log('err in sendp');}
       }else {
         console.log('MY ERR:----------'+error);
         var a = 'error';
