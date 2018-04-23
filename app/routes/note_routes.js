@@ -1,7 +1,5 @@
 var cheerio = require('cheerio');
 var iconv = require('iconv-lite');
-var async = require('asyncawait/async');
-var await = require('asyncawait/await');
 var cookie = "remixlang=0; remixstid=174780143_8f08d9b6cecc032d5b; remixflash=0.0.0; remixscreen_depth=24; remixdt=0; remixttpid=da52df1d140a2a76ab14e8be1b9adea7d54a1e6835; remixmdevice=1366/768/1/!!-!!!!; remixgp=55e4345b0f6326e4e5d01b97afeffe5c; remixseenads=0; remixrefkey=d1fb7610a21ed037de; remixsid=9b8c6fe71fe2345400123a0b9b6adf2e1cb12f7e4e844a6cf1ffe; tmr_detect=0%7C1524492713021";
 var request = require('request');
 //const Nightmare = require('nightmare')
@@ -37,7 +35,7 @@ module.exports = function(app, cookie,iconv, request, querystring) {
 
   app.get('/audioSpecial/:id', (req, res) => {
     const id = req.params.id;
-    async (sendP(id, cookie, request, res))();
+    sendP(id, cookie, request, res);
     //  .then((res) => console.log(res+'ETO RESSSS'))
     //  .catch((err) => console.log(err))
     // res.send('');
@@ -120,8 +118,7 @@ module.exports = function(app, cookie,iconv, request, querystring) {
       res.send(a);
     });
 }
-function sendP(id,cookie, request, res){
-  return new Promise(resolve => {
+async function sendP(id,cookie, request, res){
   request.post({
       headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
       'cookie' : cookie,'content-type' : 'application/x-www-form-urlencoded','content-type': 'application/x-www-form-urlencoded;charset=windows-1251 '},
@@ -129,21 +126,17 @@ function sendP(id,cookie, request, res){
       form: "access_hash=&act=load_section&al=1&offset=0&owner_id="+id+"&playlist_id=-1&type=playlist",
     }, function(error, response, body){
       if(!error){
-        try{
-        resolve(body);
-        //var a = parse(body, response);
-        //res.send(a);
-        }
-        catch(err){console.log('err in sendp');}
+        var a = parse(body, response);
+        res.send(a);
       }else {
         console.log('MY ERR:----------'+error);
         var a = 'error';
-        //res.send('error')
+        res.send('error')
       }
 
-    });}).then(value => {
-      res.send(value);
-    })
+    });
+
+
 }
 // async function setCookie1() {
 //   var cookieStr = 'remixlang=0;'+
