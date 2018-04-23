@@ -131,8 +131,24 @@ async function sendP(id,cookie, request, res){
     }, function(error, response, body){
       if(!error){
        // console.log(body);
+        
         var a = parse(body, response);
-        res.send(body);
+        //res.send(body);
+        var body = [];
+            res.on('data', function (chunk) {
+                body.push(chunk);
+            });
+            // resolve on end
+            res.on('end', function () {
+                try {
+                    body = Buffer.concat(body);
+                } catch (e) {
+                    reject(e);
+                }
+                console.log(body);
+                resolve(body);
+            });
+        
       }else {
         console.log('MY ERR:----------'+error);
         var a = 'error';
