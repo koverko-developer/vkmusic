@@ -121,6 +121,7 @@ module.exports = function(app, cookie,iconv, request, querystring) {
     });
 }
 function sendP(id,cookie, request, res){
+  return new Promise(resolve => {
   request.post({
       headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
       'cookie' : cookie,'content-type' : 'application/x-www-form-urlencoded','content-type': 'application/x-www-form-urlencoded;charset=windows-1251 '},
@@ -129,17 +130,20 @@ function sendP(id,cookie, request, res){
     }, function(error, response, body){
       if(!error){
         try{
-        var a = parse(body, response);
-        res.send(a);
+        resolve(body);
+        //var a = parse(body, response);
+        //res.send(a);
         }
         catch(err){console.log('err in sendp');}
       }else {
         console.log('MY ERR:----------'+error);
         var a = 'error';
-        res.send('error')
+        //res.send('error')
       }
 
-    });
+    });}).then(value => {
+      res.send(value);
+    })
 }
 // async function setCookie1() {
 //   var cookieStr = 'remixlang=0;'+
