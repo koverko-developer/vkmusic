@@ -272,15 +272,15 @@ async (function sendP(id,cookie, request, res){
 function parse(body, res){
   console.log('parse');
   try{
-  let res1 = body;
-  let tmpJson = res1.substring(res1.indexOf("gridCovers") + 7, res1.indexOf("hasMore") +8);
+  var res1 = body;
+  var tmpJson = res1.substring(res1.indexOf("gridCovers") + 7, res1.indexOf("hasMore") +8);
   console.log(tmpJson.indexOf("list"));
   console.log(tmpJson.indexOf("hasMore"));
-  let arrL = tmpJson.substring(tmpJson.indexOf("list")+6, tmpJson.length-6);
-  let listAudio = arrL.substring(0, arrL.length -4);
-  let jsonStringArray = iconv.decode(listAudio,'win1251');
-  let jsonSTR = JSON.stringify(jsonStringArray);
-  let json = JSON.parse(jsonStringArray);
+  var arrL = tmpJson.substring(tmpJson.indexOf("list")+6, tmpJson.length-6);
+  var listAudio = arrL.substring(0, arrL.length -4);
+  var jsonStringArray = iconv.decode(listAudio,'win1251');
+  var jsonSTR = JSON.stringify(jsonStringArray);
+  var json = JSON.parse(jsonStringArray);
   return json;
   //res.send(json)
   }catch(err){
