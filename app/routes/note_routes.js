@@ -126,6 +126,7 @@ async function sendP(id,cookie, request, res){
       form: "access_hash=&act=load_section&al=1&offset=0&owner_id="+id+"&playlist_id=-1&type=playlist",
     }, function(error, response, body){
       if(!error){
+        cosole.log(body);
         var a = parse(body, response);
         res.send(a);
       }else {
@@ -286,6 +287,7 @@ function parse(body, res){
   return json;
   //res.send(json)
   }catch(err){
+   return 'err';
   console.log('MY ERR rapse:----------');
   //res.send(err)
   }
