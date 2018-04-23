@@ -1,5 +1,7 @@
 var cheerio = require('cheerio');
 var iconv = require('iconv-lite');
+var async = require('asyncawait/async');
+var await = require('asyncawait/await');
 //const Nightmare = require('nightmare')
 //const puppeteer = require('puppeteer');
 //var cookie = require('cookie-parse');
@@ -116,7 +118,7 @@ module.exports = function(app, cookie,iconv, request, querystring) {
       res.send(a);
     });
 }
-async function sendP(id,cookie, request, res){
+async (function sendP(id,cookie, request, res){
   request.post({
       headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
       'cookie' : cookie,'content-type' : 'application/x-www-form-urlencoded','content-type': 'application/x-www-form-urlencoded;charset=windows-1251 '},
@@ -133,9 +135,7 @@ async function sendP(id,cookie, request, res){
       }
 
     });
-
-
-}
+})();
 // async function setCookie1() {
 //   var cookieStr = 'remixlang=0;'+
 //   'remixstid=174780143_8f08d9b6cecc032d5b; '+
