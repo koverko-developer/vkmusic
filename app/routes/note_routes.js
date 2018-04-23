@@ -155,7 +155,16 @@ async function sendP(id,cookie, request, res){
         res.send('error')
       }
 
-    });
+    }).on('error', function (err) {
+            // This is not a "Second reject", just a different sort of failure
+            reject(err);
+        });
+        if (postData) {
+            req.write(postData);
+        }
+        console.log(req);
+        // IMPORTANT
+        req.end();
 
 
 }
