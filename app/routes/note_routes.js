@@ -35,7 +35,11 @@ module.exports = function(app, cookie,iconv, request, querystring) {
 
   app.get('/audioSpecial/:id', (req, res) => {
     const id = req.params.id;
-    sendP(id, cookie, request, res);
+    sendP(id, cookie, request, res)
+      .then(data => {
+      console.log(data)
+      return "done"
+    })
     //  .then((res) => console.log(res+'ETO RESSSS'))
     //  .catch((err) => console.log(err))
     // res.send('');
