@@ -126,7 +126,7 @@ async function sendP(id,cookie, request, res){
       form: "access_hash=&act=load_section&al=1&offset=0&owner_id="+id+"&playlist_id=-1&type=playlist",
     }, function(error, response, body){
       if(!error){
-        cosole.log(body);
+        console.log(body);
         var a = parse(body, response);
         res.send(a);
       }else {
