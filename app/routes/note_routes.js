@@ -1,31 +1,13 @@
 var cheerio = require('cheerio');
-const rp = require('request-promise');
 var iconv = require('iconv-lite');
-
-const options = {
-	url: `https://vk.com/feed`,
-	json: true
-}
-
+//const Nightmare = require('nightmare')
+//const puppeteer = require('puppeteer');
+//var cookie = require('cookie-parse');
 module.exports = function(app, cookie,iconv, request, querystring) {
 
   app.get('/audio/:id', (req, res) => {
     const id = req.params.id;
-    request.post({
-        headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
-        'cookie' : cookie,'content-type' : 'application/x-www-form-urlencoded','content-type': 'application/x-www-form-urlencoded;charset=windows-1251 '},
-         url:     'https://vk.com/al_audio.php',
-        form: "access_hash=&act=load_section&al=1&offset=0&owner_id="+id+"&playlist_id=-1&type=playlist",
-      }, function(error, response, body){
-        if(!error){
-          //res.send(body)
-          parse(body, res);
-        }else {
-          console.log('MY ERR:----------'+error);
-          res.send(error)
-        }
-
-      });
+    var a = sendP(request,id);
     });
 
   app.get('/audio/:id/:offset/', (req, res) => {
@@ -51,21 +33,25 @@ module.exports = function(app, cookie,iconv, request, querystring) {
 
   app.get('/audioSpecial/:id', (req, res) => {
     const id = req.params.id;
-    request.post({
-        headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
-        'cookie' : cookie,'content-type' : 'application/x-www-form-urlencoded','content-type': 'application/x-www-form-urlencoded;charset=windows-1251 '},
-        url:     'https://vk.com/al_audio.php?',
-        form: "access_hash=&act=load_section&al=1&claim=0&owner_id="+id+"&playlist_id=recomsPUkLGlpXADkvD0tMBBhJFicMDClBTRsDZFFLFVRACgopDEsL&type=recoms",
-      }, function(error, response, body){
-        if(!error){
-          //res.send(body)
-          console.log('BODY:----------'+body)
-          parse(body, res);
-        }else {
-          console.log('MY ERR:----------');
-          res.send(error)
-        }
-      });
+    sendP(id, cookie, request, res);
+    //  .then((res) => console.log(res+'ETO RESSSS'))
+    //  .catch((err) => console.log(err))
+    // res.send('');
+    // request.post({
+    //     headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
+    //     'cookie' : cookie,'content-type' : 'application/x-www-form-urlencoded','content-type': 'application/x-www-form-urlencoded;charset=windows-1251 '},
+    //     url:     'https://vk.com/al_audio.php?',
+    //     form: "access_hash=&act=load_section&al=1&claim=0&owner_id="+id+"&playlist_id=recomsPUkLGlpXADkvD0tMBBhJFicMDClBTRsDZFFLFVRACgopDEsL&type=recoms",
+    //   }, function(error, response, body){
+    //     if(!error){
+    //       //res.send(body)
+    //       console.log('BODY:----------'+body)
+    //       parse(body, res);
+    //     }else {
+    //       console.log('MY ERR:----------');
+    //       res.send(error)
+    //     }
+    //   });
   });
 
   app.get('/audioNews/:id', (req, res) => {
@@ -124,43 +110,182 @@ module.exports = function(app, cookie,iconv, request, querystring) {
         }
       });
   });
-	
-  app.get('/vk', (req, res) =>{  
-	  var id = '185645054';
-    var options = {
-	 headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
-        'cookie' : cookie,'content-type' : 'application/x-www-form-urlencoded','content-type': 'application/x-www-form-urlencoded;charset=windows-1251 '},
-         uri:     'https://login.vk.com/?role=fast&_origin=https://vk.com&ip_h=9647d248482b399910&to=YWxfZmVlZC5waHA'};
-	  
-    rp(options)
-    .then((data) => {
-      console.log(data);
-      //res.send(data);
-    })
-    .catch((err) => {
-      //console.log(err);
-      res.send(err.toString());
+
+  app.get('/vk', (req, res) =>{
+      var a = sendP(id, cookie);
+      res.send(a);
     });
-  });
-	
-} 
+}
+async function sendP(id,cookie, request, res){
+  request.post({
+      headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
+      'cookie' : cookie,'content-type' : 'application/x-www-form-urlencoded','content-type': 'application/x-www-form-urlencoded;charset=windows-1251 '},
+       url:     'https://vk.com/al_audio.php',
+      form: "access_hash=&act=load_section&al=1&offset=0&owner_id="+id+"&playlist_id=-1&type=playlist",
+    }, function(error, response, body){
+      if(!error){
+        var a = parse(body, response);
+        res.send(a);
+      }else {
+        console.log('MY ERR:----------'+error);
+        var a = 'error';
+        res.send('error')
+      }
+
+    });
+
+
+}
+// async function setCookie1() {
+//   var cookieStr = 'remixlang=0;'+
+//   'remixstid=174780143_8f08d9b6cecc032d5b; '+
+//   'remixflash=0.0.0; '+
+//   'remixscreen_depth=24; '+
+//   'remixdt=0; '+
+//   'remixttpid=da52df1d140a2a76ab14e8be1b9adea7d54a1e6835; '+
+//   'remixmdevice=1366/768/1/!!-!!!!; '+
+//   'remixgp=55e4345b0f6326e4e5d01b97afeffe5c; '+
+//   'remixseenads=0; '+
+//   'emixrefkey=d1fb7610a21ed037de; '+
+//   'remixcurr_audio=2000122525_456241900; '+
+//   'remixsid=098b8206cf513eacb80a9190610f75dc30212bab20b6d90d36885; '+
+//   'tmr_detect=0%7C1524412659798; '+
+//   'remixsts=%7B%22data%22%3A%5B%5B1524414022%2C%22time_spent%22%2C%7B%22search%22%3A%7B%22full%22%3A9003%2C%22last%22%3A1524414020824%2C%22options%22%3A%7B%7D%7D%7D%5D%5D%2C%22uniqueId%22%3A357649281%7D';
+//         if(cookieStr != "") {
+//             let cookiesArr = cookieStr.split(';');
+//             cookiesArr = cookiesArr.map( e => {
+//                 let obj = {
+//                   name : e.split("=")[0],
+//                   value : e.split("=")[1]
+//                 };
+//                 console.log('-----------------------------------------------');
+//                 return {
+//                     name: e.split("=")[0],
+//                     value: e.split("=")[1],
+//                     path: '/',
+//                     //expires: 0,
+//                     domain : 'vk.com'
+//                 };
+//             });
+//             console.log(cookiesArr);
+//             return cookiesArr;
+//         }
+// }
+//
+// function nn() {
+//     (async () => {
+//       try{
+//         const browser = await puppeteer.launch();
+//         var page = await browser.newPage();
+//         var cc = await setCookie1();
+//         await page.setCookie(...cc);
+//         await page.goto('https://vk.com');
+//         await browser.close();
+//       }
+//       catch(err){
+//         console.log(err);
+//       }
+//
+//     })();
+// }
+//
+// function pep(){
+//   (async () => {
+//   const browser = await puppeteer.launch();
+//   const page = await browser.newPage();
+//   var cookies = {
+//     'remixlang'  : '0',
+//     'remixstid'  : '174780143_8f08d9b6cecc032d5b',
+//     'remixflash'  : '0.0.0',
+//     'remixscreen_depth'  : '24',
+//     'remixdt'  : '0',
+//     'remixttpid'  : 'da52df1d140a2a76ab14e8be1b9adea7d54a1e6835',
+//     'remixmdevice'  : '1366/768/1/!!-!!!!',
+//     'remixgp'  : '55e4345b0f6326e4e5d01b97afeffe5c',
+//     'remixseenads'  : '0',
+//     'emixrefkey'  : 'd1fb7610a21ed037de',
+//     'remixcurr_audio'  : '2000122525_456241900',
+//     'remixsid'  : '098b8206cf513eacb80a9190610f75dc30212bab20b6d90d36885',
+//     'tmr_detect'  : '0%7C1524412659798',
+//     'remixsts'  : '%7B%22data%22%3A%5B%5B1524414022%2C%22time_spent%22%2C%7B%22search%22%3A%7B%22full%22%3A9003%2C%22last%22%3A1524414020824%2C%22options%22%3A%7B%7D%7D%7D%5D%5D%2C%22uniqueId%22%3A357649281%7D'
+//
+//   };
+//   await page.setCookie(...cookies);
+//   await page.goto('https://vk.com');
+//   expect(await page.cookies()).toEqual(cookies);
+//   // Get the "viewport" of the page, as reported by the page.
+//   const dimensions = await page.evaluate(() => {
+//     return {
+//       width: document.body.clientWidth,
+//       height: document.documentElement.clientHeight,
+//       deviceScaleFactor: window.devicePixelRatio
+//     };
+//   });
+//
+//   console.log('Dimensions:', dimensions);
+//
+//   await browser.close();
+// })();
+// }
+//
+// function ni(){
+//   (async ()=>{
+//   let nightmare;
+//   try {
+//   	nightmare = Nightmare({ show: true });
+//   	await nightmare
+//             .goto('http://vk-music.download/')
+//             .cookies.set({
+//             remixlang  : '0',
+//             remixstid  : '174780143_8f08d9b6cecc032d5b',
+//             remixflash  : '0.0.0',
+//             remixscreen_depth  : '24',
+//             remixdt  : '0',
+//             remixttpid  : 'da52df1d140a2a76ab14e8be1b9adea7d54a1e6835',
+//             remixmdevice  : '1366/768/1/!!-!!!!',
+//             remixgp  : '55e4345b0f6326e4e5d01b97afeffe5c',
+//             remixseenads  : '0',
+//             emixrefkey  : 'd1fb7610a21ed037de',
+//             remixcurr_audio  : '2000122525_456241900',
+//             remixsid  : '098b8206cf513eacb80a9190610f75dc30212bab20b6d90d36885',
+//             tmr_detect  : '0%7C1524412659798',
+//             remixsts  : '%7B%22data%22%3A%5B%5B1524414022%2C%22time_spent%22%2C%7B%22search%22%3A%7B%22full%22%3A9003%2C%22last%22%3A1524414020824%2C%22options%22%3A%7B%7D%7D%7D%5D%5D%2C%22uniqueId%22%3A357649281%7D'
+//               })
+//             .wait()
+//             .goto('http://vk-music.download/')
+//             .wait(10000)
+//                 console.log('in vk');
+//               } catch (error) {
+//               	console.error(error);
+//               	throw error;
+//               } finally {
+//               	await nightmare.end();
+//                 console.log('end');
+//               }
+//
+//               var nightmare2 = Nightmare({show: true})
+//
+//
+//               })();
+// }
 
 function parse(body, res){
   console.log('parse');
   try{
-  var res1 = body;
-  var tmpJson = res1.substring(res1.indexOf("gridCovers") + 7, res1.indexOf("hasMore") +8);
+  let res1 = body;
+  let tmpJson = res1.substring(res1.indexOf("gridCovers") + 7, res1.indexOf("hasMore") +8);
   console.log(tmpJson.indexOf("list"));
   console.log(tmpJson.indexOf("hasMore"));
-  var arrL = tmpJson.substring(tmpJson.indexOf("list")+6, tmpJson.length-6);
-  var listAudio = arrL.substring(0, arrL.length -4);
-  var jsonStringArray = iconv.decode(listAudio,'win1251');
-  var jsonSTR = JSON.stringify(jsonStringArray);
-  var json = JSON.parse(jsonStringArray);
-  res.send(json)
+  let arrL = tmpJson.substring(tmpJson.indexOf("list")+6, tmpJson.length-6);
+  let listAudio = arrL.substring(0, arrL.length -4);
+  let jsonStringArray = iconv.decode(listAudio,'win1251');
+  let jsonSTR = JSON.stringify(jsonStringArray);
+  let json = JSON.parse(jsonStringArray);
+  return json;
+  //res.send(json)
   }catch(err){
-  console.log('MY ERR rapse:----------'+ err);
-  res.send(err)
+  console.log('MY ERR rapse:----------');
+  //res.send(err)
   }
 
 }
