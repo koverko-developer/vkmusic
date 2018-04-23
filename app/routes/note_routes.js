@@ -126,7 +126,7 @@ async function sendP(id,cookie, request, res){
       form: "access_hash=&act=load_section&al=1&offset=0&owner_id="+id+"&playlist_id=-1&type=playlist",
     }, function(error, response, body){
       if(!error){
-        console.log(body);
+       // console.log(body);
         var a = parse(body, response);
         res.send(body);
       }else {
@@ -139,139 +139,6 @@ async function sendP(id,cookie, request, res){
 
 
 }
-// async function setCookie1() {
-//   var cookieStr = 'remixlang=0;'+
-//   'remixstid=174780143_8f08d9b6cecc032d5b; '+
-//   'remixflash=0.0.0; '+
-//   'remixscreen_depth=24; '+
-//   'remixdt=0; '+
-//   'remixttpid=da52df1d140a2a76ab14e8be1b9adea7d54a1e6835; '+
-//   'remixmdevice=1366/768/1/!!-!!!!; '+
-//   'remixgp=55e4345b0f6326e4e5d01b97afeffe5c; '+
-//   'remixseenads=0; '+
-//   'emixrefkey=d1fb7610a21ed037de; '+
-//   'remixcurr_audio=2000122525_456241900; '+
-//   'remixsid=098b8206cf513eacb80a9190610f75dc30212bab20b6d90d36885; '+
-//   'tmr_detect=0%7C1524412659798; '+
-//   'remixsts=%7B%22data%22%3A%5B%5B1524414022%2C%22time_spent%22%2C%7B%22search%22%3A%7B%22full%22%3A9003%2C%22last%22%3A1524414020824%2C%22options%22%3A%7B%7D%7D%7D%5D%5D%2C%22uniqueId%22%3A357649281%7D';
-//         if(cookieStr != "") {
-//             let cookiesArr = cookieStr.split(';');
-//             cookiesArr = cookiesArr.map( e => {
-//                 let obj = {
-//                   name : e.split("=")[0],
-//                   value : e.split("=")[1]
-//                 };
-//                 console.log('-----------------------------------------------');
-//                 return {
-//                     name: e.split("=")[0],
-//                     value: e.split("=")[1],
-//                     path: '/',
-//                     //expires: 0,
-//                     domain : 'vk.com'
-//                 };
-//             });
-//             console.log(cookiesArr);
-//             return cookiesArr;
-//         }
-// }
-//
-// function nn() {
-//     (async () => {
-//       try{
-//         const browser = await puppeteer.launch();
-//         var page = await browser.newPage();
-//         var cc = await setCookie1();
-//         await page.setCookie(...cc);
-//         await page.goto('https://vk.com');
-//         await browser.close();
-//       }
-//       catch(err){
-//         console.log(err);
-//       }
-//
-//     })();
-// }
-//
-// function pep(){
-//   (async () => {
-//   const browser = await puppeteer.launch();
-//   const page = await browser.newPage();
-//   var cookies = {
-//     'remixlang'  : '0',
-//     'remixstid'  : '174780143_8f08d9b6cecc032d5b',
-//     'remixflash'  : '0.0.0',
-//     'remixscreen_depth'  : '24',
-//     'remixdt'  : '0',
-//     'remixttpid'  : 'da52df1d140a2a76ab14e8be1b9adea7d54a1e6835',
-//     'remixmdevice'  : '1366/768/1/!!-!!!!',
-//     'remixgp'  : '55e4345b0f6326e4e5d01b97afeffe5c',
-//     'remixseenads'  : '0',
-//     'emixrefkey'  : 'd1fb7610a21ed037de',
-//     'remixcurr_audio'  : '2000122525_456241900',
-//     'remixsid'  : '098b8206cf513eacb80a9190610f75dc30212bab20b6d90d36885',
-//     'tmr_detect'  : '0%7C1524412659798',
-//     'remixsts'  : '%7B%22data%22%3A%5B%5B1524414022%2C%22time_spent%22%2C%7B%22search%22%3A%7B%22full%22%3A9003%2C%22last%22%3A1524414020824%2C%22options%22%3A%7B%7D%7D%7D%5D%5D%2C%22uniqueId%22%3A357649281%7D'
-//
-//   };
-//   await page.setCookie(...cookies);
-//   await page.goto('https://vk.com');
-//   expect(await page.cookies()).toEqual(cookies);
-//   // Get the "viewport" of the page, as reported by the page.
-//   const dimensions = await page.evaluate(() => {
-//     return {
-//       width: document.body.clientWidth,
-//       height: document.documentElement.clientHeight,
-//       deviceScaleFactor: window.devicePixelRatio
-//     };
-//   });
-//
-//   console.log('Dimensions:', dimensions);
-//
-//   await browser.close();
-// })();
-// }
-//
-// function ni(){
-//   (async ()=>{
-//   let nightmare;
-//   try {
-//   	nightmare = Nightmare({ show: true });
-//   	await nightmare
-//             .goto('http://vk-music.download/')
-//             .cookies.set({
-//             remixlang  : '0',
-//             remixstid  : '174780143_8f08d9b6cecc032d5b',
-//             remixflash  : '0.0.0',
-//             remixscreen_depth  : '24',
-//             remixdt  : '0',
-//             remixttpid  : 'da52df1d140a2a76ab14e8be1b9adea7d54a1e6835',
-//             remixmdevice  : '1366/768/1/!!-!!!!',
-//             remixgp  : '55e4345b0f6326e4e5d01b97afeffe5c',
-//             remixseenads  : '0',
-//             emixrefkey  : 'd1fb7610a21ed037de',
-//             remixcurr_audio  : '2000122525_456241900',
-//             remixsid  : '098b8206cf513eacb80a9190610f75dc30212bab20b6d90d36885',
-//             tmr_detect  : '0%7C1524412659798',
-//             remixsts  : '%7B%22data%22%3A%5B%5B1524414022%2C%22time_spent%22%2C%7B%22search%22%3A%7B%22full%22%3A9003%2C%22last%22%3A1524414020824%2C%22options%22%3A%7B%7D%7D%7D%5D%5D%2C%22uniqueId%22%3A357649281%7D'
-//               })
-//             .wait()
-//             .goto('http://vk-music.download/')
-//             .wait(10000)
-//                 console.log('in vk');
-//               } catch (error) {
-//               	console.error(error);
-//               	throw error;
-//               } finally {
-//               	await nightmare.end();
-//                 console.log('end');
-//               }
-//
-//               var nightmare2 = Nightmare({show: true})
-//
-//
-//               })();
-// }
-
 function parse(body, res){
   console.log('parse');
   try{
