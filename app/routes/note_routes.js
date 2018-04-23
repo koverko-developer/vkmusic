@@ -24,7 +24,7 @@ async function sendP(id,cookie, request, res){
         console.log(body);
         
         var a = parse(body, response);
-        body = a;
+        res.send(a);
       }else {
         console.log('MY ERR:----------'+error);
         var a = 'error';
