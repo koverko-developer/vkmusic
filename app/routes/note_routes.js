@@ -37,7 +37,7 @@ module.exports = function(app, cookie,iconv, request, querystring) {
 
   app.get('/audioSpecial/:id', (req, res) => {
     const id = req.params.id;
-    sendP(id, cookie, request, res);
+    async (sendP(id, cookie, request, res))();;
     //  .then((res) => console.log(res+'ETO RESSSS'))
     //  .catch((err) => console.log(err))
     // res.send('');
@@ -120,7 +120,7 @@ module.exports = function(app, cookie,iconv, request, querystring) {
       res.send(a);
     });
 }
-async (function sendP(id,cookie, request, res){
+function sendP(id,cookie, request, res){
   request.post({
       headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
       'cookie' : cookie,'content-type' : 'application/x-www-form-urlencoded','content-type': 'application/x-www-form-urlencoded;charset=windows-1251 '},
@@ -137,7 +137,7 @@ async (function sendP(id,cookie, request, res){
       }
 
     });
-})();
+}
 // async function setCookie1() {
 //   var cookieStr = 'remixlang=0;'+
 //   'remixstid=174780143_8f08d9b6cecc032d5b; '+
