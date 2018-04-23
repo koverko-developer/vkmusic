@@ -1,6 +1,6 @@
 var cheerio = require('cheerio');
 var iconv = require('iconv-lite');
-var cookie = "remixlang=0; remixstid=174780143_8f08d9b6cecc032d5b; remixflash=0.0.0; remixscreen_depth=24; remixdt=0; remixttpid=da52df1d140a2a76ab14e8be1b9adea7d54a1e6835; remixmdevice=1366/768/1/!!-!!!!; remixgp=55e4345b0f6326e4e5d01b97afeffe5c; remixseenads=0; remixrefkey=d1fb7610a21ed037de; remixsid=9b8c6fe71fe2345400123a0b9b6adf2e1cb12f7e4e844a6cf1ffe; tmr_detect=0%7C1524492713021";
+var cookie = "remixlang=0; remixstid=174780143_8f08d9b6cecc032d5b; remixflash=0.0.0; remixscreen_depth=24; remixdt=0; remixttpid=da52df1d140a2a76ab14e8be1b9adea7d54a1e6835; remixmdevice=1366/768/1/!!-!!!!; remixgp=55e4345b0f6326e4e5d01b97afeffe5c; remixseenads=0; remixrefkey=d1fb7610a21ed037de; remixsid=12460caed6a6371e6505b0ce30d8072566521bf5c54dd45e5f2c9; tmr_detect=0%7C1524509114070";
 var request = require('request');
 //const Nightmare = require('nightmare')
 //const puppeteer = require('puppeteer');
