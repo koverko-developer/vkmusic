@@ -133,39 +133,14 @@ async function sendP(id,cookie, request, res){
        // console.log(body);
         
         var a = parse(body, response);
-        //res.send(body);
-        var body = [];
-            res.on('data', function (chunk) {
-                body.push(chunk);
-            });
-            // resolve on end
-            res.on('end', function () {
-                try {
-                    body = Buffer.concat(body);
-                } catch (e) {
-                    reject(e);
-                }
-                console.log(body);
-                resolve(body);
-            });
-        
+        body = a;
       }else {
         console.log('MY ERR:----------'+error);
         var a = 'error';
         res.send('error')
       }
 
-    }).on('error', function (err) {
-            // This is not a "Second reject", just a different sort of failure
-            reject(err);
-        });
-        if (postData) {
-            req.write(postData);
-        }
-        console.log(req);
-        // IMPORTANT
-        req.end();
-
+    });
 
 }
 function parse(body, res){
