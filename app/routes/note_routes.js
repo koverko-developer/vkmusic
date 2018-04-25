@@ -1,7 +1,5 @@
 var cheerio = require('cheerio');
 var iconv = require('iconv-lite');
-const Nightmare = require('nightmare')
-const puppeteer = require('puppeteer');
 var cookie = require('cookie-parse');
 module.exports = function(app, cookie,iconv, request, querystring) {
 
