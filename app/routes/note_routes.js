@@ -1,6 +1,5 @@
 var cheerio = require('cheerio');
 var iconv = require('iconv-lite');
-var cookie = require('cookie-parse');
 module.exports = function(app, cookie,iconv, request, querystring) {
 
   app.get('/audio/:id', (req, res) => {
