@@ -32,22 +32,7 @@ module.exports = function(app, cookie,iconv, request, querystring) {
   app.get('/audioSpecial/:id', (req, res) => {
     const id = req.params.id;
     sendP(id, cookie, request, res);
-    // res.send('');
-    // request.post({
-    //     headers: {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/65.0.3325.181 Chrome/65.0.3325.181 Safari/537.36',
-    //     'cookie' : cookie,'content-type' : 'application/x-www-form-urlencoded','content-type': 'application/x-www-form-urlencoded;charset=windows-1251 '},
-    //     url:     'https://vk.com/al_audio.php?',
-    //     form: "access_hash=&act=load_section&al=1&claim=0&owner_id="+id+"&playlist_id=recomsPUkLGlpXADkvD0tMBBhJFicMDClBTRsDZFFLFVRACgopDEsL&type=recoms",
-    //   }, function(error, response, body){
-    //     if(!error){
-    //       //res.send(body)
-    //       console.log('BODY:----------'+body)
-    //       parse(body, res);
-    //     }else {
-    //       console.log('MY ERR:----------');
-    //       res.send(error)
-    //     }
-    //   });
+  
   });
 
   app.get('/audioNews/:id', (req, res) => {
@@ -119,7 +104,7 @@ async function sendP(id,cookie, request, res){
       form: "access_hash=&act=load_section&al=1&offset=0&owner_id="+id+"&playlist_id=-1&type=playlist",
     }, function(error, response, body){
       if(!error){
-        //console.log(body);
+        console.log(body);
         var a = parse(body, response);
         res.send(a);
       }else {
