@@ -19,6 +19,7 @@ module.exports = function(app, cookie,iconv, request, querystring) {
       }, function(error, response, body){
         if(!error){
           //res.send(body)
+          console.log(body);
           parse(body, res);
         }else {
           console.log('MY ERR:----------'+error);
