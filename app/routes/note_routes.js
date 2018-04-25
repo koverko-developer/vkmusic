@@ -29,10 +29,11 @@ module.exports = function(app, cookie,iconv, request, querystring) {
       });
   });
 
-  app.get('/audioSpecial/:id', (req, res) => {
-    const id = req.params.id;
-    sendP(id, cookie, request, res);
-  
+  app.post('/audioSpecial', (req, res) => {
+    const id = req.body.id;
+    const cookies = req.body.cookies;
+    sendP(id, cookies, request, res);
+
   });
 
   app.get('/audioNews/:id', (req, res) => {
