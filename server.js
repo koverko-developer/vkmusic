@@ -18,7 +18,7 @@ var options = {
   }
 };
 
-const port = 80;
+const port = 3000;
 app.use(bodyParser.urlencoded({ extended: true }));
 require('./app/routes')(app, cookie,iconv, request, querystring);
 app.listen(port, () => {
