@@ -150,8 +150,8 @@ function getAudio(res, req, id, cookie){
     a.on('done', function(err) {
       // if our request had an error, our 'done' event will tell us.
       if (!err) console.log('Great success!');
-      var a = parse(resp, res);
-      //res.send('done');
+      //var a = parse(resp, res);
+      res.send(resp);
     })
   }
   catch(err) {
