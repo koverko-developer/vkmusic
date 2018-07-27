@@ -145,6 +145,7 @@ function getAudio(res, req, id, cookie){
       while (data = this.read()) {
         console.log(data.toString());
         resp = resp + data.toString();
+        res.send(resp);
       }
     })
     a.on('done', function(err) {
