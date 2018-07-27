@@ -4,7 +4,7 @@ var needle = require('needle');
 
 module.exports = function(app, cookie,iconv, request, querystring) {
   
-  app.get('/audio/:id', (req, res) => {
+  app.get('/', (req, res) => {
    
     res.send('hello');
     });
