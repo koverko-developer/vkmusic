@@ -165,7 +165,7 @@ async function buildPlaylist() {
     }
     let res = await audio_api(pd);
     res = prepare(res);
-    console.log(res);
+    //console.log(res);
     /*list = res.list.map(x => {
         return {
             'track_id': x[0],
@@ -230,6 +230,7 @@ async function getSources(playlist) {
 
 function prepare(data) {
     let res = iconv.decode(data, 'win1251');
+	console.log(res);
     let json_data = res.split('<!>')[5];
     json_data = JSON.parse(json_data.slice(7));
     return json_data;
