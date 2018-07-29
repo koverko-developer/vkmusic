@@ -24,6 +24,7 @@ function httpsRequest(params, postData) {
             res.on('end', function () {
                 try {
                     body = Buffer.concat(body);
+		    console.log(body);
                 } catch (e) {
                     reject(e);
                 }
@@ -163,8 +164,8 @@ async function buildPlaylist() {
         'offset': 0
     }
     let res = await audio_api(pd);
-    res = prepare(res);
-    console.log(res);
+    //res = prepare(res);
+    //console.log(res);
     /*list = res.list.map(x => {
         return {
             'track_id': x[0],
