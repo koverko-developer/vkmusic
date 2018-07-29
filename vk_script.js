@@ -165,7 +165,7 @@ async function buildPlaylist() {
     }
     let res = await audio_api(pd);
     //res = prepare(res);
-    //console.log(res);
+    console.log(res);
     /*list = res.list.map(x => {
         return {
             'track_id': x[0],
