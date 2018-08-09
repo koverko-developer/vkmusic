@@ -3,6 +3,11 @@ var iconv = require('iconv-lite');
 var needle = require('needle');
 
 module.exports = function(app, cookie,iconv, request, querystring) {
+  
+  
+    app.get('/', (req, res) => {
+      res.send('hello');
+    });
 
   app.get('/audio/:id', (req, res) => {
     const id = req.params.id;
